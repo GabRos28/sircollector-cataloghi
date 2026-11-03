@@ -1,32 +1,37 @@
 # Cataloghi offline di Sir Collector
 
 File di dati che l'app Sir Collector scarica per cercare gli oggetti anche senza internet.
+Per ogni catalogo ci sono due file:
+- `<nome>.db.gz`: database SQLite compresso, con l'indice di ricerca;
+- `<nome>.json`: versione, numero di righe e dimensioni. L'app lo legge per sapere se c'è un aggiornamento.
 
-| File | Contenuto |
-|---|---|
-| `vinili.db.gz` | Database SQLite compresso. Contiene tutti i vinili (LP, 45 giri, 10") di MusicBrainz, con l'indice di ricerca full-text. |
-| `vinili.json` | Versione (data dell'archivio MusicBrainz), numero di dischi e dimensioni. L'app lo legge per sapere se c'è un aggiornamento. |
-| `pokemon.db.gz` | Tutte le carte Pokémon di [TCGdex](https://tcgdex.dev): in italiano dove disponibili, in inglese per le espansioni non tradotte. Contiene nome, espansione, numero, rarità e indirizzo dell'immagine. |
-| `pokemon.json` | Versione, numero di carte e dimensioni. |
-| `yugioh.db.gz` | Tutte le stampe delle carte Yu-Gi-Oh! di [YGOPRODeck](https://ygoprodeck.com): carta, set, codice e rarità, con il nome italiano dove esiste. Niente immagini. |
-| `yugioh.json` | Versione, numero di stampe e dimensioni. |
+| Catalogo | Contenuto | Fonte |
+|---|---|---|
+| `vinili` | Tutti i vinili (LP, 45 giri, 10") | [MusicBrainz](https://musicbrainz.org), CC0 |
+| `pokemon` | Carte Pokémon, in italiano dove disponibili | [TCGdex](https://tcgdex.dev) |
+| `yugioh` | Stampe Yu-Gi-Oh! (carta, set, codice, rarità) | [YGOPRODeck](https://ygoprodeck.com) |
+| `magic` | Stampe inglesi di Magic: The Gathering, con il nome italiano | [Scryfall](https://scryfall.com) |
+| `lorcana` | Carte Disney Lorcana | [Lorcast](https://lorcast.com) |
+| `onepiece` | Carte One Piece Card Game | [OPTCG API](https://optcgapi.com) |
+| `digimon` | Carte Digimon Card Game | [digimoncard.io](https://digimoncard.io) |
+| `fab` | Stampe Flesh and Blood | [The Fab Cube](https://github.com/the-fab-cube/flesh-and-blood-cards) |
+| `giochi` | Videogiochi per console classiche (No-Intro, Redump) | [libretro-database](https://github.com/libretro/libretro-database) |
 
-## Fonte e licenza dei dati
+`euro-monete.json` è l'elenco delle monete euro (2 € commemorativi dalle pagine della
+[BCE](https://www.ecb.europa.eu/euro/coins/comm/html/index.it.html) e monete di circolazione
+per paese). È incluso nell'app; l'app scarica questa copia una volta al mese per aggiornarlo.
 
-I dati dei vinili vengono da [MusicBrainz](https://musicbrainz.org). Sono rilasciati come
-[CC0 (pubblico dominio)](https://creativecommons.org/publicdomain/zero/1.0/) e sono
-estratti dall'archivio pubblico <https://data.metabrainz.org/pub/musicbrainz/data/fullexport/>.
+## Immagini
 
-Le copertine non sono incluse. L'app le mostra dal [Cover Art Archive](https://coverartarchive.org).
+Nessun catalogo contiene immagini. L'app le mostra dai siti delle fonti (Cover Art Archive,
+TCGdex, Scryfall, Lorcast, thumbnails.libretro.com…) e le salva sul telefono solo se l'utente lo chiede.
 
-I dati delle carte Pokémon vengono da TCGdex (progetto open source, <https://github.com/tcgdex/cards-database>).
-Pokémon e i nomi delle carte sono marchi dei rispettivi proprietari. Le immagini restano su assets.tcgdex.net.
+## Marchi
 
-I dati delle carte Yu-Gi-Oh! vengono dall'API pubblica di YGOPRODeck. Yu-Gi-Oh! è un marchio di Konami.
+Pokémon, Yu-Gi-Oh!, Magic: The Gathering, Disney Lorcana, One Piece, Digimon, Flesh and Blood
+e i nomi dei videogiochi sono marchi dei rispettivi proprietari.
 
 ## Aggiornamento
 
-Il file si rigenera con lo script `scripts/build_vinyl_catalog.py` del progetto Sir Collector:
-1. Scaricare l'archivio più recente.
-2. Lanciare lo script.
-3. Copiare qui `vinili.db.gz` e `vinili.json` e fare il push.
+I file si rigenerano con gli script in `collezioni/scripts/` del progetto Sir Collector
+(la procedura è in `collezioni/NOTE_SVILUPPO.md`), poi si copiano qui e si fa il push.
