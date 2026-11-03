@@ -6,6 +6,8 @@ File di dati che l'app Sir Collector scarica per cercare gli oggetti anche senza
 |---|---|
 | `vinili.db.gz` | Database SQLite compresso. Contiene tutti i vinili (LP, 45 giri, 10") di MusicBrainz, con l'indice di ricerca full-text. |
 | `vinili.json` | Versione (data dell'archivio MusicBrainz), numero di dischi e dimensioni. L'app lo legge per sapere se c'è un aggiornamento. |
+| `pokemon.db.gz` | Tutte le carte Pokémon di [TCGdex](https://tcgdex.dev): in italiano dove disponibili, in inglese per le espansioni non tradotte. Contiene nome, espansione, numero, rarità e indirizzo dell'immagine. |
+| `pokemon.json` | Versione, numero di carte e dimensioni. |
 
 ## Fonte e licenza dei dati
 
@@ -14,6 +16,9 @@ I dati dei vinili vengono da [MusicBrainz](https://musicbrainz.org). Sono rilasc
 estratti dall'archivio pubblico <https://data.metabrainz.org/pub/musicbrainz/data/fullexport/>.
 
 Le copertine non sono incluse. L'app le mostra dal [Cover Art Archive](https://coverartarchive.org).
+
+I dati delle carte Pokémon vengono da TCGdex (progetto open source, <https://github.com/tcgdex/cards-database>).
+Pokémon e i nomi delle carte sono marchi dei rispettivi proprietari. Le immagini restano su assets.tcgdex.net.
 
 ## Aggiornamento
 
